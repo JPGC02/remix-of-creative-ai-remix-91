@@ -128,7 +128,7 @@ var list_conversations_default = defineTool4({
 });
 
 // src/lib/mcp/index.ts
-var projectRef = "viklxulefwluzmaedahs";
+var projectRef = "nmzbbztbusbloaayktjh";
 var mcp_default = defineMcp({
   name: "creative-studio-mcp",
   title: "Creative Studio MCP",
