@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 277 40% 4%;
+    --foreground: 220 15% 90%;
+
+    --card: 220 40% 12%;
+    --card-foreground: 220 15% 90%;
+
+    --popover: 220 40% 10%;
+    --popover-foreground: 220 15% 90%;
+
+    --primary: 165 58% 65%;
+    --primary-foreground: 220 45% 8%;
+
+    --secondary: 226 30% 25%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 220 30% 20%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 226 100% 68%;
+    --accent-foreground: 220 15% 90%;
+
+    --chart-1: 165 58% 65%;
+    --chart-2: 145 60% 61%;
+    --chart-3: 226 100% 68%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 30% 15%;
+    --input: 220 30% 15%;
+    --ring: 165 58% 65%;
+
+    --radius: 0.75rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(220 45% 8%) 0%, hsl(220 40% 12%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(220 40% 12%) 0%, hsl(220 35% 15%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(165 58% 65%) 0%, hsl(165 65% 75%) 100%);
+    
+    --shadow-glow: 0 0 20px hsl(165 58% 65% / 0.3);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 220 50% 6%;
+
+    --sidebar-foreground: 220 15% 85%;
+
+    --sidebar-primary: 165 58% 65%;
+
+    --sidebar-primary-foreground: 220 45% 8%;
+
+    --sidebar-accent: 220 40% 12%;
+
+    --sidebar-accent-foreground: 220 15% 85%;
+
+    --sidebar-border: 220 30% 12%;
+
+    --sidebar-ring: 165 58% 65%;
+
+    /* Social Module Glass Design System */
+    --social-glass-bg: 0 0% 100% / 0.15;
+    --social-glass-bg-hover: 0 0% 100% / 0.10;
+    --social-glass-bg-active: 0 0% 100% / 0.20;
+    --social-glass-border: 0 0% 100% / 0.1;
+    --social-text-primary: 0 0% 100%;
+    --social-text-secondary: 0 0% 100% / 0.7;
+    --social-text-tertiary: 0 0% 100% / 0.5;
+  }
+
+  .dark {
+    --background: 260 40% 4%;
+    --foreground: 220 15% 90%;
+
+    --card: 220 40% 12%;
+    --card-foreground: 220 15% 90%;
+
+    --popover: 220 40% 10%;
+    --popover-foreground: 220 15% 90%;
+
+    --primary: 165 58% 65%;
+    --primary-foreground: 220 45% 8%;
+
+    --secondary: 226 30% 25%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 220 30% 20%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 226 100% 68%;
+    --accent-foreground: 220 15% 90%;
+
+    --chart-1: 165 58% 65%;
+    --chart-2: 145 60% 61%;
+    --chart-3: 226 100% 68%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 30% 15%;
+    --input: 220 30% 15%;
+    --ring: 165 58% 65%;
+    --sidebar-background: 220 50% 6%;
+    --sidebar-foreground: 220 15% 85%;
+    --sidebar-primary: 165 58% 65%;
+    --sidebar-primary-foreground: 220 45% 8%;
+    --sidebar-accent: 220 40% 12%;
+    --sidebar-accent-foreground: 220 15% 85%;
+    --sidebar-border: 220 30% 12%;
+    --sidebar-ring: 165 58% 65%;
+  }
+}
+
+/* Shimmer animation para botão de IA */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* ============= DESIGN SYSTEM UTILITIES ============= */
+
+@layer components {
+  /* Glass Morphism Containers */
+  .glass-card {
+    @apply rounded-2xl border backdrop-blur-xl shadow-lg;
+    background: hsl(var(--social-glass-bg));
+    border-color: hsl(var(--social-glass-border));
+  }
+  
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:shadow-2xl hover:scale-[1.02];
+  }
+  
+  .compact-card {
+    @apply p-4 rounded-xl border bg-background/50 backdrop-blur-sm;
+  }
+  
+  .compact-card-hover {
+    @apply compact-card transition-all duration-300 hover:shadow-lg hover:scale-[1.01];
+  }
+  
+  /* Typography */
+  .page-title {
+    @apply text-2xl font-light text-foreground mb-2;
+  }
+  
+  .page-subtitle {
+    @apply text-muted-foreground text-sm;
+  }
+  
+  .card-title {
+    @apply text-base font-medium text-foreground;
+  }
+  
+  .metric-label {
+    @apply text-xs font-medium text-muted-foreground uppercase tracking-wider;
+  }
+  
+  .metric-value {
+    @apply text-3xl font-bold text-foreground;
+  }
+  
+  /* Buttons */
+  .btn-primary-turquoise {
+    @apply bg-[#05e6cc] hover:bg-[#04cdb8] text-gray-900 font-medium transition-all duration-200;
+  }
+  
+  .btn-icon-ghost {
+    @apply h-8 w-8 p-0 hover:bg-accent transition-all duration-200;
+  }
+  
+  /* Navigation */
+  .nav-item {
+    @apply w-full flex items-start gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 border backdrop-blur-sm bg-background/50 border-border hover:bg-accent text-muted-foreground hover:text-foreground;
+  }
+  
+  .nav-item-active {
+    @apply w-full flex items-start gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200 border backdrop-blur-sm bg-primary/20 border-primary/50 text-foreground;
+  }
+  
+  /* States */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-12 text-center;
+  }
+  
+  .loading-state {
+    @apply flex items-center justify-center py-8;
+  }
+}

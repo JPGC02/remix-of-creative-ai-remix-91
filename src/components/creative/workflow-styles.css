@@ -1,0 +1,226 @@
+/* ========================================
+   WORKFLOW EDITOR - PROFESSIONAL DARK THEME
+   ======================================== */
+
+/* Canvas background */
+.react-flow {
+  background-color: #09090b !important;
+}
+
+.react-flow__pane {
+  background-color: transparent !important;
+}
+
+/* ========================================
+   EDGES (CONNECTIONS)
+   ======================================== */
+
+.react-flow__edge-path {
+  stroke: #52525b !important;
+  stroke-width: 1.5px !important;
+  transition: stroke 0.15s ease, stroke-width 0.15s ease;
+}
+
+.react-flow__edge-path:hover {
+  stroke: #34d399 !important;
+  stroke-width: 2px !important;
+  cursor: pointer;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #34d399 !important;
+  stroke-width: 2px !important;
+}
+
+/* Connection in progress */
+.react-flow__connection-path {
+  stroke: #52525b !important;
+  stroke-width: 1.5px !important;
+  stroke-dasharray: 5, 5;
+  animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -10; }
+}
+
+/* Edge draw animation */
+@keyframes drawEdge {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.react-flow__edge.edge-animating .react-flow__edge-path {
+  stroke-dasharray: 1000 !important;
+  stroke-dashoffset: 1000;
+  animation: drawEdge 0.4s ease-out forwards;
+}
+
+.react-flow__edge:not(.edge-animating) .react-flow__edge-path {
+  stroke-dasharray: none !important;
+}
+
+/* Running edge animation */
+@keyframes flowDash {
+  to { stroke-dashoffset: -20; }
+}
+
+.react-flow__edge.edge-running .react-flow__edge-path {
+  stroke: #34d399 !important;
+  stroke-width: 2px !important;
+  stroke-dasharray: 8, 4 !important;
+  animation: flowDash 0.6s linear infinite;
+}
+
+/* ========================================
+   HANDLES
+   ======================================== */
+
+.react-flow__handle {
+  width: 12px !important;
+  height: 12px !important;
+  background: #3f3f46 !important;
+  border: 2px solid #09090b !important;
+  border-radius: 50% !important;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.react-flow__handle:hover {
+  background: #a1a1aa !important;
+  transform: scale(1.25);
+}
+
+.react-flow__handle.connected {
+  background: #10b981 !important;
+}
+
+/* Compatible target pulse */
+.react-flow__handle.handle-compatible {
+  background: #10b981 !important;
+  animation: handlePulse 1.5s ease-in-out infinite;
+}
+
+.react-flow__handle.handle-incompatible {
+  opacity: 0.08 !important;
+  pointer-events: none !important;
+}
+
+@keyframes handlePulse {
+  0%, 100% { box-shadow: 0 0 4px 1px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 8px 2px rgba(16, 185, 129, 0.5); }
+}
+
+/* Source handles always clickable */
+.react-flow__handle.react-flow__handle-source {
+  cursor: grab !important;
+}
+
+.react-flow__handle.react-flow__handle-source:active {
+  cursor: grabbing !important;
+}
+
+/* ========================================
+   NODES
+   ======================================== */
+
+.react-flow__node {
+  transition: box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.react-flow__node.react-flow__node-dragging {
+  transition: none !important;
+}
+
+/* Selected node */
+.react-flow__node.selected {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5), 0 0 0 4px #09090b !important;
+}
+
+/* Debug current node */
+.react-flow__node-debug-current {
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5), 0 0 16px rgba(16, 185, 129, 0.3) !important;
+  animation: pulseDebug 2s infinite;
+}
+
+@keyframes pulseDebug {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5), 0 0 16px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5), 0 0 24px rgba(16, 185, 129, 0.5); }
+}
+
+/* ========================================
+   CONTROLS (ZOOM)
+   ======================================== */
+
+.react-flow__controls {
+  background-color: rgba(24, 24, 27, 0.8) !important;
+  border: 1px solid #27272a !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+.react-flow__controls-button {
+  background-color: transparent !important;
+  border-bottom: 1px solid #27272a !important;
+  color: #71717a !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.react-flow__controls-button svg {
+  fill: #71717a !important;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #27272a !important;
+  color: #e4e4e7 !important;
+}
+
+.react-flow__controls-button:hover svg {
+  fill: #e4e4e7 !important;
+}
+
+/* ========================================
+   MINIMAP
+   ======================================== */
+
+.react-flow__minimap {
+  background-color: rgba(24, 24, 27, 0.8) !important;
+  border: 1px solid #27272a !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.react-flow__minimap:hover {
+  opacity: 1;
+}
+
+/* ========================================
+   BACKGROUND DOTS
+   ======================================== */
+
+.react-flow__background .react-flow__background-pattern {
+  fill: rgba(63, 63, 70, 0.3) !important;
+}
+
+/* ========================================
+   NODE RESIZE HANDLES
+   ======================================== */
+
+.react-flow__resize-control.handle {
+  background-color: #a1a1aa;
+  border: 2px solid #09090b;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.react-flow__resize-control.handle:hover {
+  background-color: #e4e4e7;
+  width: 10px;
+  height: 10px;
+}
